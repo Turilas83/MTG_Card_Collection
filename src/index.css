@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 50px;
+  font-family: sans-serif;
+  background-color: #dcdde1;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.desc {
+  padding: 15px;
+  text-align: center;
+}
+#cardsTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cardsTable td, #cardsTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#cardsTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#cardsTable tr:hover {background-color: #ddd;}
+
+#cardsTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #718093;
+  color: #f5f6fa;
+}
+h1 {
+  text-align: center;
+}
+.button {
+  background-color: #718093;
+  border: none;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 2px 2px;
+  cursor: pointer;
+  border-top-right-radius: 8px;
+}
+.searchField {
+  text-align: right;
+}
+.query {
+  height: 25px;
+  border-top-left-radius: 8px;
+  font-size: 20px;
+}
