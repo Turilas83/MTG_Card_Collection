@@ -9,11 +9,25 @@ class CardSearch extends Component {
     this.state = {
     listItems: [],
     search: '',
+    cardCollection: [],
+    name: ""
     };
   }
   onChange = (event) => {
     this.setState({search: event.target.value});
   };
+  addCard = key => {
+    const {name} = this.state;
+    const items = {
+      name
+    };
+  
+    this.setState({
+      names: [...this.state.cardCollection, items],
+      name: ""
+    });
+  };
+
   buttonPressed = () => {
     console.log("testi");
     fetch("https://api.magicthegathering.io/v1/cards?name="+ this.state.search )
@@ -25,6 +39,9 @@ class CardSearch extends Component {
     })
   }
 
+  clickAdd(key) {
+    this.addCard(key);
+  }
   render() {
     const itemRows = this.state.listItems.map((cards, i) =>
     <tr key={cards.id}>
@@ -40,16 +57,16 @@ class CardSearch extends Component {
             </div>
         </div>
       </td>
-      <td><button className="addButton">Add</button></td>
+      <td><button className="addButton" onClick={() => this.clickAdd(cards.name)}>Add</button></td>
     </tr>
   )
     return (
       <div>     
-        <h1>Magic the Gathering</h1>
         <div className="searchField">
           <input type="text" className="query" placeholder="Card name" onChange={this.onChange} value={this.state.search}/>
           <button onClick={this.buttonPressed} className="button">Search</button>
         </div>
+        <form onSubmit={this.addCard}>
         <table id="cardsTable">
           <tbody>
             <tr>
@@ -63,6 +80,7 @@ class CardSearch extends Component {
             {itemRows}
           </tbody>
         </table>
+        </form>
       </div>
     );
   }
