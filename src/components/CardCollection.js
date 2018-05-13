@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../styles/App.css';
 
-class App extends Component {
+class CardSearch extends Component {
  
   constructor(props) {
     super(props);
@@ -34,13 +34,13 @@ class App extends Component {
       <td>{cards.setName}</td>
       <td>  
         <div className="dropdown">
-          <img src={cards.imageUrl} alt="Image not available" width="13" height="19" />
-          <div className="dropdown-content">
-            <img src={cards.imageUrl} alt="Sorry" width="223" height="310" />
-           
-          </div>
+          { cards.imageUrl && <img src={cards.imageUrl} alt={cards.name} width="13" height="19" />}
+            <div className="dropdown-content">
+              <img src={cards.imageUrl} alt={cards.name} width="223" height="310" />
+            </div>
         </div>
       </td>
+      <td><button className="addButton">Add</button></td>
     </tr>
   )
     return (
@@ -58,6 +58,7 @@ class App extends Component {
               <th>Type</th>
               <th>Set</th>
               <th>Image</th>
+              <th>Add card to<br/> your collection</th>
             </tr>
             {itemRows}
           </tbody>
@@ -68,4 +69,4 @@ class App extends Component {
 }
 
 
-export default App;
+export default CardSearch;
