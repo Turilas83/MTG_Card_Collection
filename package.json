@@ -15,6 +15,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "description": "<h1>MTG card collection application</h1>",
   "main": "index.js",
   "repository": {
@@ -28,3 +29,4 @@
   },
   "homepage": "https://github.com/Turilas83/MTG_Card_Collection#readme"
 }
+

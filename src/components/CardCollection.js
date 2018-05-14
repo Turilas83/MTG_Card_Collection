@@ -4,41 +4,37 @@ import '../styles/App.css';
 import CardSearch from './CardSearch';
 
 class CardCollection extends Component {
- 
-  constructor(props) {
-    super(props);
-    this.state = {
-    cards: []
-    };
-  }
-  deleteCard = key => {
-    const cards = this.state.cards.filter((card, i) => i != key);
-    this.setState({
-      cards
-    });
-  };
-  clickDelete(key) {
-    this.deleteCard(key);
-  }
+ state = { users: [] }
+
+ componentDidMount() {
+   fetch('/users')
+    .then(res => res.json())
+    .then(users => this.setState({ users }));
+ }
   render() {
+    const itemRows = this.state.users.map((user, i) =>
+    <tr key={user.id}>
+      <td>{user.name}</td>
+      <td>{user.color}</td>
+      <td>{user.type}</td>
+      <td>{user.set}</td>
+    </tr>
+  )
     return (
-      <div className="MyCards">
-        <table>
-            <tr><th>Name</th></tr>
-            {this.state.cards.map((item, key) => (
-            <tbody>
-              <tr key={key}>
-              <td>{item.key}</td>
-              <td>{item.name}</td>
-              <button className="deleteButton" onClick={() => this.clickDelete(key)} />
+      <div>     
+        <table id="cardsTable">
+          <tbody>
+            <tr>
+              <th>Card name</th>
+              <th>Color</th>
+              <th>Type</th>
+              <th>Set</th>
             </tr>
+            {itemRows}
           </tbody>
-          
-          
-          ))}
-          
         </table>
-      </div>     
+      </div>
+   
     );
   }
 }
